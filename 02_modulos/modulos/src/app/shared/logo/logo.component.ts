@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class LogoComponent implements OnInit {
 
   public sLogo: string;
-  
+
   constructor() { }
 
   ngOnInit() {
     this.sLogo = '../assets/angular_logo.svg';
+  }
+
+  btnResponder (oEvent) {
+    alert('Hola');
   }
 
 }

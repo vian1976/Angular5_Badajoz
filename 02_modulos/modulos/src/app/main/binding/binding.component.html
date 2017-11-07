@@ -1,0 +1,16 @@
+<article class="row">
+  <div class="col">
+    
+    <label>Dime tu nombre: </label>
+    <input type="text" [(ngModel)]="sNombre" />
+    <button (click)="sNombre=''">Borrar</button>
+    <button (click)="borrar($event)">Borrar funcion</button>
+  </div>
+  <div class=col>
+    <p>
+      Hola {{sNombre}}
+    </p>
+  </div>
+
+  
+</article>
