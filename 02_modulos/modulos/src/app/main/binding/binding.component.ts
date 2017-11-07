@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class BindingComponent implements OnInit {
 
   sNombre: string;
+  nNumber: number;
+  isSpanish: boolean;
 
   constructor() { }
 
@@ -15,8 +17,10 @@ export class BindingComponent implements OnInit {
     this.sNombre = 'Pedro García';
   }
 
-  borrar() {
+  btnBorrar() {
     this.sNombre = '';
+    this.nNumber = 22;
+    this.isSpanish = false;
   }
 
 }
