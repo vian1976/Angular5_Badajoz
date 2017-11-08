@@ -1,0 +1,21 @@
+<div>
+  <h2>Ejemplo de Pipes</h2>
+  <p>lowercase: {{sNombre | lowercase}}</p> 
+  <p>uppercase: {{sNombre | uppercase}}</p> 
+  <p>titlecase: {{sNombre | titlecase}}</p> 
+
+  <p>Precio: {{nPrecio}}</p> 
+  <p>currency: {{nPrecio | currency}}</p> 
+  <p>percent: {{nPrecio | percent}}</p> 
+
+  <p>Numero: {{nNumber}}</p> 
+  <p>currency: {{nNumber | number: "2.2-2"}}</p> 
+
+  <p>Fecha: {{dFecha}}}</p> 
+  <p>Fecha: {{dFecha | date: "dd/m/yyyy - HH:MM"}}</p> 
+  <p>Fecha: {{dFecha | date: "fullDate"}}</p> 
+  <p>Fecha: {{dFecha | date: "shortDate"}}</p> 
+
+  <p>Libro: {{oLibro}}</p> 
+  <div>json: <pre>{{oLibro | json}}</pre> </div> 
+</div>
