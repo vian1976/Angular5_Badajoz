@@ -1,0 +1,107 @@
+<article>
+    <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()" >
+       <!--Text-->    
+       <legend>Usuario</legend>
+       <p>
+           <!--Etiqueta / Campo "Mombre"-->						
+           <label for="firstname">Nombre</label>
+           <input type="text" name="name" id="name" placeholder="Indica tu nombre"
+           formControlName="nombre" >
+       </p>
+       
+       <div [hidden]="formulario.controls['nombre'].valid || formulario.controls['nombre'].untouched">
+            <div class="error-message" [hidden]="!formulario.controls['nombre'].errors?.required">
+             El nombre es obligatorio
+            </div>
+            <div class="error-message" [hidden]="!formulario.controls['nombre'].errors?.minlength">
+            Número mínimo de caracteres 4
+            </div>
+        </div>    
+    
+       <p>
+           <!--Etiqueta / Campo "Apellidos"-->
+           <label for="lastname">Apellidos</label>
+           <input type="text" id="lastname" placeholder="Indica tu apellido" 
+           formControlName="apellidos" >
+       </p>
+       
+        <div [hidden]="formulario.controls['apellidos'].valid ||formulario.controls['apellidos'].untouched">
+            <div class="error-message">
+             El apellido es obligatorio
+            </div>
+        </div>
+    
+       <p>
+           <!--Etiqueta / Campo "Telefono"-->
+           <label for="phoneNumber">Teléfono</label>
+           <input type="text" id="phoneNumber" maxlength="9" placeholder="Telefono" formControlName="telefono"  
+               > 
+       </p>	
+       
+       <div [hidden]="formulario.controls['telefono'].valid ||formulario.controls['telefono'].untouched">
+            <div class="error-message" [hidden]="!formulario.controls['telefono'].errors?.required">
+             El teléfono es obligatorio
+            </div>
+            <div class="error-message" [hidden]="!formulario.controls['telefono'].errors?.pattern">
+            Número mínimo de caracteres 9
+            </div>
+        </div>   
+    
+
+        <!--Radio-Buttos-->
+        <h2>Selecciona una Impresora</h2>
+        <div *ngFor="let impresora of aPrinters">
+            <input type="radio" [value]="impresora" formControlName="impresora" >
+            <label>{{impresora.modelo}}</label>
+        </div>
+
+        <!--Checkbox-->    
+        <h2>Seleción de opciones</h2>
+        <p>
+            <input id="print" type="checkbox" formControlName="color" >
+            <label for="print">Imprimir en color</label><br>
+            
+            <input id="tono" type="checkbox" formControlName="tono" > 
+            <label for="tono">Tono claro</label>			
+        </p>
+        
+        <!--Select/options --> 
+        <p>
+            <label for="select">Departamento </label>
+            <select id="select" formControlName="departamento" > 
+                <option *ngFor="let departamento of aDepartaments" [ngValue]="departamento">
+                    {{departamento.nombre}}
+                </option>
+            </select>
+        </p>
+
+        <button type="submit" [disabled]="formulario.invalid">Enviar </button>
+        <button type="button" [disabled]="formulario.pristine" (click)="borrarFormulario()" >Borrar</button>
+
+
+    </form>
+
+    {{formulario.value | json}}
+    
+    <div *ngIf="mostrarFinal">
+       
+        <h2>Resultado</h2>
+        <ul>
+            <li>Usuario: {{formulario.value.nombre}} {{formulario.value.apellidos}}</li>
+            <li>Impresora seleccionada: {{formulario.value.impresora | json}}</li>
+            <li>Opción print seleccionada: {{formulario.value.color}}</li>
+            <li>Opción claro seleccionada: {{formulario.value.tono}}</li>
+            <li>Departamento elegido: {{formulario.value.departamento | json}}</li>
+        </ul>
+   
+        <legend>Validación:</legend>
+        <ul>
+            <li>Validez: {{formulario.valid}}</li>
+            <li>Untouched: {{formulario.untouched}}</li>
+            <li>touched: {{formulario.touched}}</li>
+            <li>pristine: {{formulario.pristine}}</li>
+        </ul>
+    
+    </div>	
+</article>
+<br /><br />
